@@ -95,10 +95,10 @@ python script.py
 
 **Exemplo de saída esperada:**
 ```
-✅ Usuário Ana Silva cadastrado com sucesso!
-✅ Usuário Bruno Souza cadastrado com sucesso!
-✅ Usuário Carla Pereira cadastrado com sucesso!
-❌ Erro ao cadastrar Daniel Oliveira: {'detail': 'CPF inválido'}
+✅ Success! Ana Silva created!
+✅ Success! Bruno Souza created!
+✅ Success! Carla Pereira created!
+❌ Error registering Daniel Oliveira: {'detail': 'CPF inválido'}
 ```
 
 ---
