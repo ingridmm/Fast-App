@@ -10,7 +10,6 @@ from database import SessionLocal, UserDB
 
 app = FastAPI()
 
-# Função para obter uma sessão do banco de dados
 def get_db():
     db = SessionLocal()
     try:
@@ -22,7 +21,7 @@ def get_db():
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
-        return {"error": "E-mail ou Senha incorretos"}
+        return {"error": "Wrong e-mail or password"}
 
     access_token = create_access_token(data={"sub": user["email"]})
     return {"access_token": access_token, "token_type": "bearer"}
@@ -38,7 +37,7 @@ def create_user(user: UserSchema, db: Session = Depends(get_db), current_user: d
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return {"message": "Usuário cadastrado com sucesso!", "user": db_user}
+    return {"message": "Success! User created!", "user": db_user}
 
 @app.get('/users', status_code=HTTPStatus.OK)
 def list_users(db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
