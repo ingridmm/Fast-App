@@ -5,6 +5,8 @@ from fastapi import HTTPException, Security, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import jwt, JWTError
 from passlib.context import CryptContext
+from database import SessionLocal
+from models import UserDB
 
 #configs/constantes JWT
 SECRET_KEY = "chave_secreta_para_teste"
@@ -29,8 +31,10 @@ def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 def authenticate_user(email: str, password: str):
-    user = fake_users_db.get(email)
-    if not user or not verify_password(password, user["hashed_password"]):
+    db = SessionLocal()
+    user = db.query(UserDB).filter(UserDB.email == email).first()
+    db.close()
+    if not user or not verify_password(password, user.hashed_password):
         return None
     return user
 
