@@ -25,9 +25,9 @@ def send_user_data(user_data, token):
     response = requests.post(USERS_ENDPOINT, json=user_data, headers=headers)
 
     if response.status_code == 200:
-        print(f"{response.status_code} -> {response.json()}")
+        print(f"Success! {user_data['nome']} created! {response.status_code} -> {response.json()}")
     else:
-        print(f"{response.status_code} -> {response.json()}")
+        print(f"Error registering {user_data['nome']}. {response.status_code} -> {response.json()}")
 
 def read_csv_and_send_data():
     token = get_jwt_token()
