@@ -1,4 +1,4 @@
-# 📌 Documentação do Projeto: API com FastAPI e Integração CSV
+# 📌 FastAPI Integrado com Leitura para CSV
 
 ## 1️⃣ Introdução
 Este projeto consiste em uma API desenvolvida com **FastAPI**, que permite o cadastro de usuários com autenticação JWT. Além disso, há um script Python que lê dados de um arquivo CSV e os envia para a API.
