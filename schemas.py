@@ -12,7 +12,3 @@ class UserPublic(BaseModel):
     nome: str
     email: str
 
-'''
-class UserList(BaseModel):
-    users: list[UserPublic]
-'''

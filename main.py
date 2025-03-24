@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from schemas import UserSchema, UserPublic
+from schemas import UserSchema
 from auth import authenticate_user, create_access_token, get_current_user
 from database import SessionLocal, UserDB
 
@@ -45,8 +45,3 @@ def list_users(db: Session = Depends(get_db), current_user: dict = Depends(get_c
     users = db.query(UserDB).all()
     return {"users": users}
 
-'''
-@app.get('/users/', response_model=UserList)
-def read_users():
-    return {'user': UserList}
-'''
